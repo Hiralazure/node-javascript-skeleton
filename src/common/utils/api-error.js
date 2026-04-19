@@ -11,4 +11,7 @@ export class ApiError extends Error {
   static unAuthorised(message = "unAuthorised") {
     return new ApiError(401, message);
   }
+  static conflict(message = "Conflict - User already exists") {
+    return new ApiError(409, message);
+  }
 }
