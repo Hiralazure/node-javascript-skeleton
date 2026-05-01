@@ -7,12 +7,14 @@ import {
   requestLogger,
 } from "./src/common/middleware/customMiddleware.js";
 import { globalErrorHandler } from "./src/common/middleware/errorHandler.js";
+import { urlVersioning } from "./src/common/middleware/apiVersioning.js";
 
 const PORT = process.env.PORT || 3000;
 const start = async () => {
   app.use(requestLogger);
   app.use(addTimeStamp);
   app.use(express.json());
+  app.use("/api/v1", urlVersioning("v1"));
   app.use(configureCors());
   await connectDB();
   app.use(globalErrorHandler);
