@@ -14,4 +14,7 @@ export class ApiError extends Error {
   static conflict(message = "Conflict - User already exists") {
     return new ApiError(409, message);
   }
+  static forbidden(message = "forbidden") {
+    return new ApiError(402, message);
+  }
 }
